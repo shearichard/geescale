@@ -10,4 +10,18 @@ var Q = window.Q = Quintus()                // Create a new engine instance
     ... Actual game code goes here ...
     */
      
+    Q.Class.extend("MyClass", {
+       init: function() { console.log("MyClass instance created"); },
+       doIt: function() { alert("Doin it!"); } 
+    });
+     
+    var myInstance = new Q.MyClass(); // MyClass instance created
+     
+    myInstance.doIt(); // Doin it!
+     
+    console.log(myInstance.className); // 'MyClass'
+    console.log(myInstance instanceof Q.Class); // true
+    console.log(myInstance instanceof Q.MyClass); // true
 });
+
+
