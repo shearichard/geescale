@@ -28,13 +28,22 @@ var Q = window.Q = Quintus()                // Create a new engine instance
       }
     });
 
+    //Create a scene   
+    Q.scene("level1",function(stage) {
+      stage.insert(new Q.Ball());
+    });
+
+    //Set game rolling
     Q.load(["ball.png"],function() {
+      /*
       var ball = new Q.Ball();
       Q.gameLoop(function(dt) {
         ball.update(dt);
         Q.clear();
         ball.render(Q.ctx);
       });
+      */
+      Q.stageScene("level1");
     });
      
     /*
