@@ -9,7 +9,35 @@ var Q = window.Q = Quintus()                // Create a new engine instance
     /*
     ... Actual game code goes here ...
     */
+    Q.Sprite.extend("Ball",{
+      init:function(p) {
+        this._super(p,{
+          asset: "ball.png",
+          x: 0, 
+          y: 30,
+          vx: 50,
+          vy: -400
+        }); 
+      },
+
+      step: function(dt) {
+        this.p.vy += dt * 9.8;
+
+        this.p.x += this.p.vx * dt;
+        this.p.y += this.p.vy * dt;
+      }
+    });
+
+    Q.load(["ball.png"],function() {
+      var ball = new Q.Ball();
+      Q.gameLoop(function(dt) {
+        ball.update(dt);
+        Q.clear();
+        ball.render(Q.ctx);
+      });
+    });
      
+    /*
     Q.Class.extend("MyClass", {
        init: function() { console.log("MyClass instance created"); },
        doIt: function() { alert("Doin it!"); } 
@@ -22,6 +50,7 @@ var Q = window.Q = Quintus()                // Create a new engine instance
     console.log(myInstance.className); // 'MyClass'
     console.log(myInstance instanceof Q.Class); // true
     console.log(myInstance instanceof Q.MyClass); // true
+    */
 });
 
 
